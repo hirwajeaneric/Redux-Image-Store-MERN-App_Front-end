@@ -13,7 +13,7 @@ export const BodyContainer = styled.nav`
         width: 80%;
         justify-content: center;
         align-items: center;
-        margin-bottom: 40px;
+        margin: 20px 0 40px;
 
         h2 {
             font-size: 150%;
@@ -21,6 +21,7 @@ export const BodyContainer = styled.nav`
             color: purple;
             text-align: left;
             width: 100%;
+            margin-bottom: 20px;
         }
     }
 
@@ -69,7 +70,7 @@ export const ImageCardContainer = styled.div`
 
         p {
             color: white;
-            padding-left: 10px;
+            padding: 10px;
             font-size: 90%;
             display: none; 
         }
@@ -105,7 +106,7 @@ export const ImageCardContainer = styled.div`
 
     @media (max-width: 768px) {
         width: 100%;
-        height: 300px;
+        height: 200px;
     }
 
     @media (max-width: 480px) {
@@ -141,8 +142,8 @@ export const FormContainer = styled.form`
     align-items: center; 
     flex-wrap: nowrap;
     width: 100%;
-    gap: 20px;
-    margin-bottom: 20px;
+    gap: 10px;
+    margin-bottom: 40px;
 
     div {
         background: white;  
@@ -158,6 +159,81 @@ export const FormContainer = styled.form`
         div, input {
             width: 100%;
         }    
+    }
+
+    @media (max-width: 480px) {
+        
+    }
+`;
+
+export const ImageDetailsContainer = styled.div`
+    display: flex; 
+    flex-direction: row; 
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 20px;
+    margin-bottom: 20px;
+
+    div.image-container {
+        width: 80%;
+        background-size: cover; 
+        background-repeat: no-repeat;
+        height: 500px;
+    }
+
+    div.image-descriptions {
+        width: 18%;
+        display: flex; 
+        flex-direction: column; 
+        justify-content: flex-start; 
+        align-items: flex-start;
+        gap: 10px;
+
+        div.buttons {
+            width: 100%;
+            margin-top: 40px;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: flex-start; 
+            align-items: flex-start;
+            gap: 10px;
+            
+            div {
+                width: 100%;
+                margin-top: 10px;
+                display: flex; 
+                flex-direction: column; 
+                justify-content: space-between; 
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    }
+
+
+    @media (max-width: 1080px) {
+                
+    }
+
+    @media (max-width: 768px) {
+        flex-wrap: wrap;
+        
+        div.image-container {
+            width: 100%;
+            height: 200px;
+        }
+    
+        div.image-descriptions {
+            width: 100%;
+        
+            div.buttons {        
+                div {
+                    flex-direction: row; 
+                }
+            }
+        }
     }
 
     @media (max-width: 480px) {
