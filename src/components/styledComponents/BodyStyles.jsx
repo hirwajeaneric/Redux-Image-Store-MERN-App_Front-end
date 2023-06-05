@@ -21,6 +21,8 @@ export const BodyContainer = styled.nav`
             color: purple;
             text-align: left;
             width: 100%;
+            border-bottom: 1px solid gray;
+            padding-bottom: 10px;
             margin-bottom: 20px;
         }
     }
@@ -81,8 +83,9 @@ export const ImageCardContainer = styled.div`
         width: 100%;
         display: flex; 
         flex-direction: row; 
-        justify-content: space-between; 
+        justify-content: center; 
         align-items: center;
+        gap: 10px;
     
         svg {
             cursor: pointer; 
@@ -95,6 +98,14 @@ export const ImageCardContainer = styled.div`
 
         svg.edit {
             color: purple;
+        }
+
+        svg.like {
+            color: tomato;
+        }
+
+        svg.favorite {
+            color: orange;
         }
 
 
@@ -121,6 +132,7 @@ export const CardListContainer = styled.div`
     align-items: flex-start; 
     flex-wrap: nowrap;
     width: 100%;
+    margin-bottom: 20px; 
 
     @media (max-width: 1080px) {
                 
