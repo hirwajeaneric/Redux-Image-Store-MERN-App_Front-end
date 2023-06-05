@@ -41,3 +41,44 @@ export const BodyContainer = styled.nav`
         }
     }
 `;
+
+export const ImageCardContainer = styled.div`
+    width: 30px; 
+    height: 200px; 
+    background: white; 
+    box-shadow: 0 1.5px 5px 0 rgba(0, 0, 0, 0.19);
+
+    @media (max-width: 1080px) {
+                
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+
+    @media (max-width: 480px) {
+        
+    }
+`;
+
+export const CardListContainer = styled.div`
+    display: flex; 
+    flex-direction: row; 
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    gap:20px; 
+    width:100%; 
+    flex-wrap: wrap;
+
+    @media (max-width: 1080px) {
+                
+    }
+
+    @media (max-width: 768px) {
+        
+    }
+
+    @media (max-width: 480px) {
+        
+    }
+`;

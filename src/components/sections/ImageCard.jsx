@@ -1,7 +1,10 @@
 import React from 'react'
+import { ImageCardContainer } from '../styledComponents/BodyStyles';
 
 export default function ImageCard() {
   return (
-    <div>ImageCard</div>
+    <ImageCardContainer>
+      ImageCard
+    </ImageCardContainer>
   )
 }

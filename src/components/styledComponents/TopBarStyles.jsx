@@ -8,6 +8,7 @@ export const TopBarContainer = styled.nav`
     align-items: center;
     padding: 20px 0px;
     border-bottom: 1px solid gray;
+    background: white;
 
     div {
         display: flex;
