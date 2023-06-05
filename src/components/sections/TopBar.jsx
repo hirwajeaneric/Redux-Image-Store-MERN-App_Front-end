@@ -6,7 +6,7 @@ export default function TopBar() {
   return (
     <TopBarContainer>
       <div>
-        <Link to={'/'}>Image Store</Link>
+        <Link to={'/'}>RTK Gallery</Link>
       </div>
     </TopBarContainer>
   )

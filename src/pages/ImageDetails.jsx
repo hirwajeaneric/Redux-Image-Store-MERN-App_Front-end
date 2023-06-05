@@ -22,7 +22,7 @@ export default function ImageDetails() {
             <p>Name:<br/><strong>Hakerefsdsdf  sd</strong></p>
             <p>Added on:<br/><strong>March 12, 2023</strong></p>
             <div className='buttons'>
-              <Button size='small' color='primary' variant='contained' type='submit' onClick={() => navigate('/edit/asdfsadfsdf')}>Go to Edit</Button>
+              <Button size='small' color='primary' variant='contained' type='button' onClick={() => navigate('/edit/asdfsadfsdf')}>Go to Edit</Button>
               <div>
                 <Button size='small' color='secondary' variant='contained' type='submit'><ArrowBackIcon /> Previous</Button>
                 <Button size='small' color='secondary' variant='contained' type='submit'>Next <ArrowForwardIcon /></Button>

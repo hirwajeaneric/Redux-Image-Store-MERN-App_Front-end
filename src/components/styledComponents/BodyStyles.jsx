@@ -183,13 +183,18 @@ export const ImageDetailsContainer = styled.div`
         height: 500px;
     }
 
-    div.image-descriptions {
+    div.image-descriptions, 
+    form.image-descriptions {
         width: 18%;
         display: flex; 
         flex-direction: column; 
         justify-content: flex-start; 
         align-items: flex-start;
         gap: 10px;
+
+        input {
+            background: white;
+        }
 
         div.buttons {
             width: 100%;
@@ -225,10 +230,19 @@ export const ImageDetailsContainer = styled.div`
             height: 200px;
         }
     
-        div.image-descriptions {
+        div.image-descriptions,
+        form.image-descriptions {
             width: 100%;
-        
-            div.buttons {        
+            input,div {
+                width: 100%;
+            }
+
+            div.buttons {
+                width: 100%;
+                button {
+                    width: 100%;
+                }        
+
                 div {
                     flex-direction: row; 
                 }
