@@ -49,10 +49,31 @@ export const ImageCardContainer = styled.div`
     margin-bottom: 20px;
     display: flex; 
     flex-direction: column; 
-    justify-content: flex-end; 
+    justify-content: space-between; 
     align-items: center;
     background-size: cover; 
     background-repeat: no-repeat;
+
+    &:hover {
+        div.image-name-container {
+            p {
+                display: block;
+            }
+        }
+    }
+
+    div.image-name-container {
+        background: rgba(0,0,0,0.5);
+        padding: 0px;
+        width: 100%;
+
+        p {
+            color: white;
+            padding-left: 10px;
+            font-size: 90%;
+            display: none; 
+        }
+    }
 
     div.button-group {
         background: white;
@@ -106,6 +127,37 @@ export const CardListContainer = styled.div`
 
     @media (max-width: 768px) {
         flex-wrap: wrap;    
+    }
+
+    @media (max-width: 480px) {
+        
+    }
+`;
+
+export const FormContainer = styled.form`
+    display: flex; 
+    flex-direction: row; 
+    justify-content: flex-start; 
+    align-items: center; 
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: 20px;
+    margin-bottom: 20px;
+
+    div {
+        background: white;  
+    }
+
+
+    @media (max-width: 1080px) {
+                
+    }
+
+    @media (max-width: 768px) {
+        flex-wrap: wrap;
+        div, input {
+            width: 100%;
+        }    
     }
 
     @media (max-width: 480px) {

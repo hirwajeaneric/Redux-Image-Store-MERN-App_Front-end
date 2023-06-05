@@ -22,6 +22,7 @@ export const TopBarContainer = styled.nav`
             text-decoration: none;
             color: green;
             font-size: 200%;
+            font-weight: 700;
             
             &:hover {
                 color: black;
