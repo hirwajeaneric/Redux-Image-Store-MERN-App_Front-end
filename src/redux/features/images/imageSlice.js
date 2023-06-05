@@ -5,7 +5,7 @@ import { add, list, update, deleteAll, findById, deleteImage, image } from '../.
 const initialState = {
     listOfImages: [],
     selectedImage: {},
-    filteredImages: [], 
+    favoriteImages: [], 
     total: 0,
     isLoading: false
 }
@@ -14,7 +14,24 @@ const imageSlice = createSlice({
     name: 'image',
     initialState,
     reducers: {
-        
+        add: {
+
+        },
+        update: {
+            
+        },
+        delete: {
+
+        },
+        deleteAll: {
+
+        },
+        generateTotal: {
+
+        },
+        generateTotalFavorites: {
+
+        }
     },
     extraReducers: {
 

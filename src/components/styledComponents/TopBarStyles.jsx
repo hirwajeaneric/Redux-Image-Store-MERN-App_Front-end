@@ -28,6 +28,10 @@ export const TopBarContainer = styled.nav`
                 color: black;
             }
         }
+
+        div.other-specs {
+            width: 30%;
+        }
     }
     
 
@@ -39,6 +43,10 @@ export const TopBarContainer = styled.nav`
         padding: 10px 0px;
         div {
             width: 90%;
+
+            div.other-specs {
+                width: 100%;
+            }
         }
     }
 

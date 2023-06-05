@@ -11,6 +11,8 @@ export default function ListImages() {
         <AddImageForm />
         <h2>My images</h2>
         <ImageList />
+        <h2>Favorites</h2>
+        <ImageList />
       </div>
     </BodyContainer>
   )
