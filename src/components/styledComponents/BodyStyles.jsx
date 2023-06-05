@@ -7,14 +7,13 @@ export const BodyContainer = styled.nav`
     justify-content: center;
     align-items: center;
 
-    div {
+    div.inner-container {
         display: flex;
         flex-direction: column;
         width: 80%;
         justify-content: center;
         align-items: center;
         margin-bottom: 40px;
-        gap: 20px;
 
         h2 {
             font-size: 150%;
@@ -30,23 +29,54 @@ export const BodyContainer = styled.nav`
     }
 
     @media (max-width: 768px) {
-        div {
+        div.inner-container {
             width: 90%;
         }
     }
 
     @media (max-width: 480px) {
-        div {
+        div.inner-container {
             width: 95%;
         }
     }
 `;
 
 export const ImageCardContainer = styled.div`
-    width: 30px; 
+    width: 32%; 
     height: 200px; 
     background: white; 
     box-shadow: 0 1.5px 5px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 20px;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-end; 
+    align-items: center;
+    background-size: cover; 
+    background-repeat: no-repeat;
+
+    div.button-group {
+        background: white;
+        width: 100%;
+        display: flex; 
+        flex-direction: row; 
+        justify-content: space-between; 
+        align-items: center;
+    
+        svg {
+            cursor: pointer; 
+            margin: 5px;
+        }
+
+        svg.preview {
+            color: blue;
+        }
+
+        svg.edit {
+            color: purple;
+        }
+
+
+    }
 
     @media (max-width: 1080px) {
                 
@@ -54,6 +84,7 @@ export const ImageCardContainer = styled.div`
 
     @media (max-width: 768px) {
         width: 100%;
+        height: 300px;
     }
 
     @media (max-width: 480px) {
@@ -64,18 +95,17 @@ export const ImageCardContainer = styled.div`
 export const CardListContainer = styled.div`
     display: flex; 
     flex-direction: row; 
-    justify-content: flex-start; 
+    justify-content: space-between; 
     align-items: flex-start; 
-    gap:20px; 
-    width:100%; 
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    width: 100%;
 
     @media (max-width: 1080px) {
                 
     }
 
     @media (max-width: 768px) {
-        
+        flex-wrap: wrap;    
     }
 
     @media (max-width: 480px) {

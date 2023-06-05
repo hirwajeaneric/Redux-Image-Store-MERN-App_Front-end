@@ -14,7 +14,7 @@ function App() {
           <Route path='/' element={<Main />}>
             <Route path='' element={<ListImages />} />
             <Route path='details/:id' element={<ImageDetails />} />
-            <Route path='update/:id' element={<UpdateImage />} />
+            <Route path='edit/:id' element={<UpdateImage />} />
           </Route>
         </Routes>
       </BrowserRouter>
