@@ -10,6 +10,8 @@ const initialState = {
     isLoading: false
 }
 
+
+
 const imageSlice = createSlice({
     name: 'image',
     initialState,

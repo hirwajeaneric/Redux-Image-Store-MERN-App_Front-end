@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import PreviewIcon from '@mui/icons-material/Preview';
 import Edit from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 // Down
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
@@ -25,6 +26,7 @@ export default function ImageCard() {
         <ThumbUpOffAltIcon className='like' onClick={()=> navigate('/details/122332323')}/>
         <FavoriteBorderIcon className='favorite' onClick={()=> navigate('/details/122332323')}/>
         <Edit className='edit' onClick={()=> navigate('/edit/122332323')} />
+        <DeleteIcon className='delete' onClick={()=> navigate('/edit/122332323')} />
       </div>
     </ImageCardContainer>
   )

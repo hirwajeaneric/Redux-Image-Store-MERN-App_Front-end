@@ -21,6 +21,7 @@ export default function ImageDetails() {
           <div className='image-descriptions'>
             <p>Name:<br/><strong>Hakerefsdsdf  sd</strong></p>
             <p>Added on:<br/><strong>March 12, 2023</strong></p>
+            <p>Likes:<br/><strong>2</strong></p>
             <div className='buttons'>
               <Button size='small' color='primary' variant='contained' type='button' onClick={() => navigate('/edit/asdfsadfsdf')}>Go to Edit</Button>
               <div>

@@ -108,7 +108,9 @@ export const ImageCardContainer = styled.div`
             color: orange;
         }
 
-
+        svg.delete {
+            color: red;
+        }
     }
 
     @media (max-width: 1080px) {
