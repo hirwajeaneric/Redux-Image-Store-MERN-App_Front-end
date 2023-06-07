@@ -1,15 +1,17 @@
-const host = 'localhost';
-const post = '7777';
+// const host = 'localhost';
+const protocol = 'http';
+const host = '192.168.43.16';
+const port = '7777';
 const baseLink = '/api/v1/imagestore/';
 
-const ImageApis = {
-    list: host+":"+post+baseLink+"list",
-    add: host+":"+post+baseLink+"add",
-    update: host+":"+post+baseLink+"update?id=",
-    findById: host+":"+post+baseLink+"findById?id=",
-    deleteImage: host+":"+post+baseLink+"delete?id=",
-    deleteAll: host+":"+post+baseLink+"deleteAll",
-    image: host+":"+post+baseLink+"images"
+const links = {
+    list: protocol+"://"+host+":"+port+baseLink+"list",
+    add: protocol+"://"+host+":"+port+baseLink+"add",
+    update: protocol+"://"+host+":"+port+baseLink+"update?id=",
+    findById: protocol+"://"+host+":"+port+baseLink+"findById?id=",
+    deleteImage: protocol+"://"+host+":"+port+baseLink+"delete?id=",
+    deleteAll: protocol+"://"+host+":"+port+baseLink+"deleteAll",
+    image: protocol+"://"+host+":"+port+baseLink+"images"
 } 
 
-module.exports = ImageApis;
+module.exports = { links, protocol, host, port, baseLink };

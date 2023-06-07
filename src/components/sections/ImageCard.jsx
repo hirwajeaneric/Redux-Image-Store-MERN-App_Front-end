@@ -13,11 +13,15 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 // Up
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { baseLink, host, port } from '../../utils/Apis';
 
-export default function ImageCard() {
+export default function ImageCard({ image }) {
   const navigate = useNavigate(); 
+  console.log(image);
+  console.log("http://"+host+port+baseLink+image.name);
+  
   return (
-    <ImageCardContainer style={{ backgroundImage: "url('pexels-jill-wellington-40815.jpg')" }}>
+    <ImageCardContainer style={{ backgroundImage: "url('http://"+host+port+baseLink+image.name+"')" }}>
       <div className='image-name-container'>
         <p>Levels achieved</p>
       </div>
