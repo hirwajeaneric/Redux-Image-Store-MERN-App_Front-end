@@ -28,8 +28,8 @@ const imageSlice = createSlice({
     name: 'image',
     initialState,
     reducers: {
-        listAll: {
-
+        findById: (state, action) => {
+            state.selectedImage = state.listOfImages.images.find(image => image._id === action.payload);
         },
         addNew: {
 
@@ -44,7 +44,6 @@ const imageSlice = createSlice({
 
         },
         generateTotal: (state, action) => {
-            console.log(action.payload);
             state.total = action.payload;
         },
         generateTotalFavorites: {
