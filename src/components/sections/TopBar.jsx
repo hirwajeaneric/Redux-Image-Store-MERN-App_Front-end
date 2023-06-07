@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { TopBarContainer } from '../styledComponents/TopBarStyles'
 import { Link } from 'react-router-dom';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 export default function TopBar() {
   const { total } = useSelector((state) => state.image);
-  console.log(total);
 
   return (
     <TopBarContainer>

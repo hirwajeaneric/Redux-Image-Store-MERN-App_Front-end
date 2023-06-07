@@ -14,8 +14,10 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { links } from '../../utils/Apis';
+import { useDispatch } from 'react-redux';
 
 export default function ImageCard({ data }) {
+  const dispatch = useDispatch();
   const navigate = useNavigate(); 
   
   return (
@@ -24,11 +26,16 @@ export default function ImageCard({ data }) {
         <p>{data.label}</p>
       </div>
       <div className='button-group'>
-        <PreviewIcon className='preview' onClick={()=> navigate('/details/122332323')}/>
+        <PreviewIcon 
+          className='preview' 
+          onClick={()=> { navigate(`/details/${data._id}`); }}
+        />
         <ThumbUpOffAltIcon className='like' onClick={()=> navigate('/details/122332323')}/>
         <FavoriteBorderIcon className='favorite' onClick={()=> navigate('/details/122332323')}/>
-        <Edit className='edit' onClick={()=> navigate('/edit/122332323')} />
-        <DeleteIcon className='delete' onClick={()=> navigate('/edit/122332323')} />
+        <Edit className='edit' onClick={()=> navigate(`/edit/${data._id}`)} />
+        <DeleteIcon 
+          className='delete' 
+          onClick={()=> { navigate(`/edit/${data._id}`); }} />
       </div>
     </ImageCardContainer>
   )

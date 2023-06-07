@@ -256,10 +256,6 @@ export const ImageDetailsContainer = styled.div`
                 button {
                     width: 100%;
                 }        
-
-                div {
-                    flex-direction: row; 
-                }
             }
         }
     }
