@@ -132,7 +132,7 @@ export const CardListContainer = styled.div`
     flex-direction: row; 
     justify-content: space-between; 
     align-items: flex-start; 
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     width: 100%;
     margin-bottom: 20px; 
 

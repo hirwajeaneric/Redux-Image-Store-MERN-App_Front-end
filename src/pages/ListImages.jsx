@@ -12,12 +12,14 @@ export default function ListImages() {
       <div className='inner-container'>
         <h2>Add Image</h2>
         <AddImageForm />
-        <h2>My images</h2>
           {isLoading ? <p>Loading...</p> :
-            <ImageList listOfImages={listOfImages.images} />
+            <>
+              <h2>My images</h2>
+              <ImageList listOfImages={listOfImages.images} />
+              <h2>Favorites</h2>
+              <ImageList />
+            </>
           }
-        <h2>Favorites</h2>
-        {/* <ImageList /> */}
       </div>
     </BodyContainer>
   )

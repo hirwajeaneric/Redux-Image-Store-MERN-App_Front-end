@@ -15,7 +15,11 @@ function App() {
   useEffect(() => {
     dispatch(getImages());
   }, [dispatch]);
-  
+
+  useEffect(()=>{
+    dispatch({type: 'image/generateTotal'});
+  },[dispatch]);
+
   return (
       <BrowserRouter>
         <Routes>
