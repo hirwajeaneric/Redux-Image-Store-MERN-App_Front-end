@@ -13,17 +13,17 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 // Up
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { baseLink, host, port } from '../../utils/Apis';
+import { baseLink, host, port, links } from '../../utils/Apis';
 
-export default function ImageCard({ image }) {
+export default function ImageCard({ data }) {
   const navigate = useNavigate(); 
-  console.log(image);
-  console.log("http://"+host+port+baseLink+image.name);
-  
+  // console.log(data);
+  // console.log(links.image+"/"+data.name);
+
   return (
-    <ImageCardContainer style={{ backgroundImage: "url('http://"+host+port+baseLink+image.name+"')" }}>
+    <ImageCardContainer style={{ backgroundImage: ""+links.image+"/"+data.name+"" }}>
       <div className='image-name-container'>
-        <p>Levels achieved</p>
+        <p>{data.name}</p>
       </div>
       <div className='button-group'>
         <PreviewIcon className='preview' onClick={()=> navigate('/details/122332323')}/>

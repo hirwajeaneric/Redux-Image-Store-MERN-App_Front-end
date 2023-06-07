@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
 // import { Counter } from './features/counter/Counter';
 import ListImages from './pages/ListImages';
@@ -6,8 +6,16 @@ import ImageDetails from './pages/ImageDetails';
 import UpdateImage from './pages/UpdateImage';
 
 import TopBar from './components/sections/TopBar.jsx';
+import { useDispatch } from 'react-redux';
+import { getImages } from './redux/features/images/imageSlice';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getImages());
+  }, [dispatch]);
+  
   return (
       <BrowserRouter>
         <Routes>
