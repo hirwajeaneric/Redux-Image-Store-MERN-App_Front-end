@@ -58,7 +58,12 @@ export const updateImage = createAsyncThunk(
         try {
             const { id, image } = update;
             const config = { headers: { "Content-Type":"multipart/form-data" } }
-            const response = await axios.put(links.update+id, image);
+            var response = {};
+            if (!image.name) {
+                response = await axios.put(links.update+id, image);
+            } else {
+                response = await axios.put(links.update+id, image, config);
+            }
             thunkAPI.dispatch({ type: 'image/updateSelectedImage', payload: response.data });
             thunkAPI.dispatch(getImages());
             return response.data; 

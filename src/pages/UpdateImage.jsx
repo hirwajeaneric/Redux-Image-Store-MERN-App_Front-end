@@ -19,7 +19,11 @@ export default function UpdateImage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [label, setLabel] = useState('');
+  const [file, setFile] = useState('');
 
+  const handleFile = (e) => {
+    setFile(e.target.files[0]);
+  };
   useEffect(() => {
     dispatch(getImageDetails(params.id));
   },[dispatch, params.id]);
@@ -36,7 +40,12 @@ export default function UpdateImage() {
 
   const submitForm = (e) => {
     e.preventDefault();
-    dispatch(updateImage({ id: selectedImage._id, image: { label: label }}));
+    dispatch(updateImage({ id: selectedImage._id, image: { name: file, label: label }}));
+  }
+
+  const likeImage = (e) => {
+    e.preventDefault();
+    dispatch(updateImage({ id: selectedImage._id, image: { likes: selectedImage.likes+1 }}));
   }
 
   return (
@@ -55,16 +64,17 @@ export default function UpdateImage() {
               <form onSubmit={submitForm} className='image-descriptions'>
                 <p>Label:<br/><strong>{selectedImage.label}</strong></p>
                 <p>Likes:<br/><strong>{selectedImage.likes}</strong></p>
+                <TextField type='file' id="file" size='small' name='file' onChange={handleFile} variant="outlined" />
                 <TextField id="name" label="Change label" size='small' name='label' onChange={handleLabel} variant="outlined" />
                 <div className='buttons'>
                 {
                   isProcessing ?
                   <Button disabled size='small' color='primary' variant='contained'>Processing</Button> :
-                  <Button size='small' color='primary' variant='contained' type='submit'>ADD</Button>
+                  <Button size='small' color='primary' variant='contained' type='submit'>EDIT</Button>
                 }
                   <div>
-                    <Button size='small' color='secondary' variant='contained' type='submit'><ThumbUpOffAltIcon />&nbsp;Like</Button>
-                    <Button size='small' color='secondary' variant='contained' type='submit'><FavoriteBorderIcon />&nbsp;Add to Favorites</Button>
+                    <Button size='small' color='secondary' variant='contained' type='button' onClick={likeImage}><ThumbUpOffAltIcon />&nbsp;Like</Button>
+                    <Button size='small' color='secondary' variant='contained' type='button'><FavoriteBorderIcon />&nbsp;Add to Favorites</Button>
                   </div>
                 </div>
               </form>
