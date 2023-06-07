@@ -4,12 +4,12 @@ import { Button, TextField } from '@mui/material'
 import { useState } from 'react'
 
 export default function AddImageForm() {
-  const [name, setName] = useState('');
+  const [label, setLabel] = useState('');
   const [file, setFile] = useState('');
 
-  const handleName = (event) => {
-    setName(event.target.value);
-    console.log(name);
+  const handleLabel = (event) => {
+    setLabel(event.target.value);
+    console.log(label);
   };
 
   const handleFile = (e) => {
@@ -32,7 +32,7 @@ export default function AddImageForm() {
   return (
     <FormContainer onSubmit={submitForm}>
       <TextField type='file' id="file" size='small' name='file' onChange={handleFile} variant="outlined" />
-      <TextField id="name" label="Image name" size='small' name='name' onChange={handleName} variant="outlined" />
+      <TextField id="label" label="Image label" size='small' name='label' onChange={handleLabel} variant="outlined" />
       <Button size='small' color='primary' variant='contained' type='submit'>ADD</Button>
     </FormContainer>
   )

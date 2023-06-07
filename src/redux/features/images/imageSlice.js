@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
-import { add, list, update, deleteAll, findById, deleteImage, image } from '../../../utils/Apis';
+import { links } from '../../../utils/Apis';
 
 const initialState = {
     listOfImages: [],
@@ -10,32 +10,61 @@ const initialState = {
     isLoading: false
 }
 
+export const getImages = createAsyncThunk(
+    'image/getImages',
+    async (name, thunkAPI) => {
+        try {
+            const response = await axios.get(links.list);
+            console.log(thunkAPI);
+            console.log(response.data.images);
+            thunkAPI.dispatch({ type: 'image/generateTotal', payload: response.data.images.length });
+            return response.data; 
+        } catch (error) {
+            return thunkAPI.rejectWithValue('Something went wrong!');
+        }
+    }
+)
+
 const imageSlice = createSlice({
     name: 'image',
     initialState,
     reducers: {
-        add: {
+        listAll: {
 
         },
-        update: {
+        addNew: {
+
+        },
+        edit: {
             
         },
-        delete: {
+        trash: {
 
         },
-        deleteAll: {
+        trashAll: {
 
         },
-        generateTotal: {
-
+        generateTotal: (state, action) => {
+            console.log(action.payload);
+            state.total = action.payload;
         },
         generateTotalFavorites: {
 
         }
     },
     extraReducers: {
-
+        [getImages.pending] : (state)=> {
+            state.isLoading = true;
+        },
+        [getImages.fulfilled] : (state,action) => {
+            state.isLoading = false;
+            state.listOfImages = action.payload;
+        },
+        [getImages.rejected] : (state, action) => {
+            state.isLoading = false;
+        },
     }
 });
 
+export const { listAll, addNew, edit, trash, trashAll, generateTotal, generateTotalFavorites  } = imageSlice.actions;
 export default imageSlice.reducer;
