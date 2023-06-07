@@ -15,8 +15,7 @@ export const getImages = createAsyncThunk(
     async (name, thunkAPI) => {
         try {
             const response = await axios.get(links.list);
-            console.log(thunkAPI);
-            console.log(response.data.images);
+            // console.log(response.data.images);
             thunkAPI.dispatch({ type: 'image/generateTotal', payload: response.data.images.length });
             return response.data; 
         } catch (error) {

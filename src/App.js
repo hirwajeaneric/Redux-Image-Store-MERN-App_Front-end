@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Routes, Outlet } from 'react-router-dom';
-// import { Counter } from './features/counter/Counter';
 import ListImages from './pages/ListImages';
 import ImageDetails from './pages/ImageDetails';
 import UpdateImage from './pages/UpdateImage';
@@ -15,10 +14,6 @@ function App() {
   useEffect(() => {
     dispatch(getImages());
   }, [dispatch]);
-
-  useEffect(()=>{
-    dispatch({type: 'image/generateTotal'});
-  },[dispatch]);
 
   return (
       <BrowserRouter>
