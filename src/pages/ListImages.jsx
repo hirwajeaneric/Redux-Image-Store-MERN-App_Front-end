@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { BodyContainer } from '../components/styledComponents/BodyStyles'
 import ImageList from '../components/sections/ImageList'
 import AddImageForm from '../components/forms/AddImageForm'

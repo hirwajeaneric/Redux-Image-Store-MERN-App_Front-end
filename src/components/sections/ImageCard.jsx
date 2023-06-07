@@ -32,7 +32,7 @@ export default function ImageCard({ data }) {
         />
         <ThumbUpOffAltIcon className='like' onClick={()=> navigate('/details/122332323')}/>
         <FavoriteBorderIcon className='favorite' onClick={()=> navigate('/details/122332323')}/>
-        <Edit className='edit' onClick={()=> navigate(`/details/${data.label}`)} />
+        <Edit className='edit' onClick={()=> navigate(`/edit/${data._id}`)} />
         <DeleteIcon 
           className='delete' 
           onClick={()=> { navigate(`/edit/${data._id}`); }} />

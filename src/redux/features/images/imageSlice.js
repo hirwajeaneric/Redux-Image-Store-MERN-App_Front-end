@@ -15,21 +15,47 @@ export const getImages = createAsyncThunk(
     async (name, thunkAPI) => {
         try {
             const response = await axios.get(links.list);
-            // console.log(response.data.images);
             thunkAPI.dispatch({ type: 'image/generateTotal', payload: response.data.images.length });
             return response.data; 
         } catch (error) {
             return thunkAPI.rejectWithValue('Something went wrong!');
         }
     }
-)
+);
+
+export const getImageDetails = createAsyncThunk(
+    'image/getImageDetails',
+    async (imageId, thunkAPI) => {
+        try {
+            const response = await axios.get(links.findById+imageId);    
+            return response.data.image; 
+        } catch (error) {
+            return thunkAPI.rejectWithValue('Something went wrong!');
+        }
+    }
+);
+
+export const addImage = createAsyncThunk(
+    'image/addImage',
+    async ( image, thunkAPI) => {
+        try {
+            const response = await axios.post(links.add, image);
+            thunkAPI.dispatch(getImages());
+            thunkAPI.dispatch({ type: 'image/generateTotal', payload: response.data.images.length });
+            console.log(response.data);
+            return response.data; 
+        } catch (error) {
+            return thunkAPI.rejectWithValue('Something went wrong!');
+        }
+    }
+);
 
 const imageSlice = createSlice({
     name: 'image',
     initialState,
     reducers: {
         findById: (state, action) => {
-            state.selectedImage = state.listOfImages.images.find(image => image._id === action.payload);
+            
         },
         addNew: {
 
@@ -58,7 +84,27 @@ const imageSlice = createSlice({
             state.isLoading = false;
             state.listOfImages = action.payload;
         },
-        [getImages.rejected] : (state, action) => {
+        [getImages.rejected] : (state) => {
+            state.isLoading = false;
+        },
+        [getImageDetails.pending] : (state)=> {
+            state.isLoading = true;
+        },
+        [getImageDetails.fulfilled] : (state,action) => {
+            state.isLoading = false;
+            state.selectedImage = action.payload;
+        },
+        [getImageDetails.rejected] : (state) => {
+            state.isLoading = false;
+        },
+        [addImage.pending] : (state)=> {
+            state.isLoading = true;
+        },
+        [addImage.fulfilled] : (state,action) => {
+            state.isLoading = false;
+            state.listOfImages = action.payload;
+        },
+        [addImage.rejected] : (state) => {
             state.isLoading = false;
         },
     }
