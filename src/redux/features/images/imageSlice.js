@@ -7,7 +7,8 @@ const initialState = {
     selectedImage: {},
     favoriteImages: [], 
     total: 0,
-    isLoading: false
+    isLoading: false,
+    isProcessing: false
 }
 
 export const getImages = createAsyncThunk(
@@ -39,10 +40,27 @@ export const addImage = createAsyncThunk(
     'image/addImage',
     async ( image, thunkAPI) => {
         try {
-            const response = await axios.post(links.add, image);
+            const config = { headers: { "Content-Type":"multipart/form-data" } }
+            const response = await axios.post(links.add, image, config);
             thunkAPI.dispatch(getImages());
             thunkAPI.dispatch({ type: 'image/generateTotal', payload: response.data.images.length });
             console.log(response.data);
+            return response.data; 
+        } catch (error) {
+            return thunkAPI.rejectWithValue('Something went wrong!');
+        }
+    }
+);
+
+export const updateImage = createAsyncThunk(
+    'image/updateImage',
+    async ( update, thunkAPI) => {
+        try {
+            const { id, image } = update;
+            const config = { headers: { "Content-Type":"multipart/form-data" } }
+            const response = await axios.put(links.update+id, image);
+            thunkAPI.dispatch({ type: 'image/updateSelectedImage', payload: response.data });
+            thunkAPI.dispatch(getImages());
             return response.data; 
         } catch (error) {
             return thunkAPI.rejectWithValue('Something went wrong!');
@@ -54,8 +72,8 @@ const imageSlice = createSlice({
     name: 'image',
     initialState,
     reducers: {
-        findById: (state, action) => {
-            
+        updateSelectedImage: (state, action) => {
+            state.selectedImage = action.payload.image;
         },
         addNew: {
 
@@ -98,14 +116,22 @@ const imageSlice = createSlice({
             state.isLoading = false;
         },
         [addImage.pending] : (state)=> {
-            state.isLoading = true;
+            state.isProcessing = true;
         },
         [addImage.fulfilled] : (state,action) => {
-            state.isLoading = false;
-            state.listOfImages = action.payload;
+            state.isProcessing = false;
         },
         [addImage.rejected] : (state) => {
-            state.isLoading = false;
+            state.isProcessing = false;
+        },
+        [updateImage.pending] : (state)=> {
+            state.isProcessing = true;
+        },
+        [updateImage.fulfilled] : (state,action) => {
+            state.isProcessing = false;
+        },
+        [updateImage.rejected] : (state) => {
+            state.isProcessing = false;
         },
     }
 });

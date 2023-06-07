@@ -4,7 +4,7 @@ import { Button, TextField } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getImageDetails } from '../redux/features/images/imageSlice';
+import { getImageDetails, updateImage } from '../redux/features/images/imageSlice';
 import { links } from '../utils/Apis';
 // Down
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
@@ -24,7 +24,7 @@ export default function UpdateImage() {
     dispatch(getImageDetails(params.id));
   },[dispatch, params.id]);
 
-  const { selectedImage, isLoading } = useSelector((state) => state.image);
+  const { selectedImage, isLoading, isProcessing } = useSelector((state) => state.image);
 
   useEffect(() => {
     setLabel(selectedImage.label);
@@ -32,19 +32,11 @@ export default function UpdateImage() {
 
   const handleLabel = (event) => {
     setLabel(event.target.value);
-    console.log(label);
   };
 
   const submitForm = (e) => {
     e.preventDefault();
-    
-    const config = {
-      headers: {
-        "Content-Type":"multipart/form-data"
-      }
-    }
-
-
+    dispatch(updateImage({ id: selectedImage._id, image: { label: label }}));
   }
 
   return (
@@ -60,11 +52,16 @@ export default function UpdateImage() {
                   backgroundImage: "url('"+links.image+"/"+selectedImage.name+"')",
                 }}>
               </div>
-              <form className='image-descriptions'>
-                <TextField id="name" label="Image name" size='small' name='label' onChange={handleLabel} variant="outlined" />
+              <form onSubmit={submitForm} className='image-descriptions'>
+                <p>Label:<br/><strong>{selectedImage.label}</strong></p>
                 <p>Likes:<br/><strong>{selectedImage.likes}</strong></p>
+                <TextField id="name" label="Change label" size='small' name='label' onChange={handleLabel} variant="outlined" />
                 <div className='buttons'>
-                  <Button size='small' color='primary' variant='contained' type='submit'>CONFIRM EDIT</Button>
+                {
+                  isProcessing ?
+                  <Button disabled size='small' color='primary' variant='contained'>Processing</Button> :
+                  <Button size='small' color='primary' variant='contained' type='submit'>ADD</Button>
+                }
                   <div>
                     <Button size='small' color='secondary' variant='contained' type='submit'><ThumbUpOffAltIcon />&nbsp;Like</Button>
                     <Button size='small' color='secondary' variant='contained' type='submit'><FavoriteBorderIcon />&nbsp;Add to Favorites</Button>
